@@ -25,13 +25,16 @@ jobs:
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          global-json-file: global.json
 
       - name: Install .NET MAUI Android workload
         run: dotnet workload install maui-android
 
       - name: Restore
-        run: dotnet restore src/Maui.Android.WallpaperScheduler.App/Maui.Android.WallpaperScheduler.App.csproj
+        run: >
+          dotnet restore
+          src/Maui.Android.WallpaperScheduler.App/Maui.Android.WallpaperScheduler.App.csproj
+          -p:CheckEolTargetFramework=false
 
       - name: Build APK
         run: >
@@ -41,6 +44,7 @@ jobs:
           -f net8.0-android
           -p:AndroidPackageFormat=apk
           -p:EmbedAssembliesIntoApk=true
+          -p:CheckEolTargetFramework=false
 
       - name: Collect APK
         shell: bash
