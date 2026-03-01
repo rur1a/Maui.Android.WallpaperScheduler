@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AB927069-AE9A-49CB-AB94-9729D8F96A5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Android.WallpaperScheduler.App", "src\Maui.Android.WallpaperScheduler.App\Maui.Android.WallpaperScheduler.App.csproj", "{B4F10975-9FB0-4AD0-AD71-10E8C54078EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Android.WallpaperScheduler.App.Tests", "src\Maui.Android.WallpaperScheduler.App.Tests\Maui.Android.WallpaperScheduler.App.Tests.csproj", "{E2F70404-E4AF-495E-B60F-6955949518C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4F10975-9FB0-4AD0-AD71-10E8C54078EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F10975-9FB0-4AD0-AD71-10E8C54078EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F10975-9FB0-4AD0-AD71-10E8C54078EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F10975-9FB0-4AD0-AD71-10E8C54078EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F70404-E4AF-495E-B60F-6955949518C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F70404-E4AF-495E-B60F-6955949518C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F70404-E4AF-495E-B60F-6955949518C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F70404-E4AF-495E-B60F-6955949518C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4F10975-9FB0-4AD0-AD71-10E8C54078EB} = {AB927069-AE9A-49CB-AB94-9729D8F96A5B}
+		{E2F70404-E4AF-495E-B60F-6955949518C2} = {AB927069-AE9A-49CB-AB94-9729D8F96A5B}
+	EndGlobalSection
+EndGlobal

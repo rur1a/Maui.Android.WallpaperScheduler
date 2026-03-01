@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Maui.Android.WallpaperScheduler.App\Application\Abstractions\IWallpaperSchedulerGateway.cs"
+             Link="AppSource\Application\Abstractions\IWallpaperSchedulerGateway.cs" />
+    <Compile Include="..\Maui.Android.WallpaperScheduler.App\Application\Abstractions\IWallpaperSchedulerService.cs"
+             Link="AppSource\Application\Abstractions\IWallpaperSchedulerService.cs" />
+    <Compile Include="..\Maui.Android.WallpaperScheduler.App\Application\Errors\SchedulerValidationException.cs"
+             Link="AppSource\Application\Errors\SchedulerValidationException.cs" />
+    <Compile Include="..\Maui.Android.WallpaperScheduler.App\Application\Services\WallpaperSchedulerService.cs"
+             Link="AppSource\Application\Services\WallpaperSchedulerService.cs" />
+    <Compile Include="..\Maui.Android.WallpaperScheduler.App\Domain\Models\SchedulerEntry.cs"
+             Link="AppSource\Domain\Models\SchedulerEntry.cs" />
+    <Compile Include="..\Maui.Android.WallpaperScheduler.App\Domain\WallpaperSourceEndpoints.cs"
+             Link="AppSource\Domain\WallpaperSourceEndpoints.cs" />
+  </ItemGroup>
+
+</Project>

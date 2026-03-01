@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!-- Fallback semantic palette. Shared.Theming updates these keys at runtime. -->
+    <Color x:Key="ColorPrimary">#512BD4</Color>
+    <Color x:Key="ColorPrimaryDark">#AC99EA</Color>
+    <Color x:Key="ColorPrimaryDarkText">#242424</Color>
+    <Color x:Key="ColorSecondary">#DFD8F7</Color>
+    <Color x:Key="ColorSecondaryDarkText">#9880E5</Color>
+    <Color x:Key="ColorTertiary">#2B0B98</Color>
+    <Color x:Key="ColorOnPrimary">#FFFFFF</Color>
+    <Color x:Key="ColorBackground">#FFFFFF</Color>
+    <Color x:Key="ColorSurface">#F2F2F2</Color>
+    <Color x:Key="ColorTextPrimary">#111111</Color>
+    <Color x:Key="ColorTextSecondary">#555555</Color>
+    <Color x:Key="ColorWhite">#FFFFFF</Color>
+    <Color x:Key="ColorBlack">#000000</Color>
+    <Color x:Key="ColorOffBlack">#1F1F1F</Color>
+    <Color x:Key="ColorNeutral100">#E1E1E1</Color>
+    <Color x:Key="ColorNeutral200">#C8C8C8</Color>
+    <Color x:Key="ColorNeutral300">#ACACAC</Color>
+    <Color x:Key="ColorNeutral400">#919191</Color>
+    <Color x:Key="ColorNeutral500">#6E6E6E</Color>
+    <Color x:Key="ColorNeutral600">#404040</Color>
+    <Color x:Key="ColorNeutral900">#212121</Color>
+    <Color x:Key="ColorNeutral950">#141414</Color>
+
+    <!-- App-specific accents -->
+    <Color x:Key="Magenta">#D600AA</Color>
+    <Color x:Key="MidnightBlue">#190649</Color>
+</ResourceDictionary>
+

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MAUI.Presentation.Pages.SchedulerManagerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:MAUI.Presentation.ViewModels"
+    x:DataType="viewModels:SchedulerManagerViewModel"
+    Title="">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Padding="16">
+
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="*,Auto,Auto"
+            ColumnSpacing="12">
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                Text="Active Schedulers"
+                VerticalOptions="Center" />
+            <Button
+                x:Name="ThemeIconButton"
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                Clicked="OnThemeSettingsClicked"
+                Padding="8">
+                <Button.ImageSource>
+                    <FontImageSource
+                        Color="{DynamicResource ColorTextPrimary}"
+                        Glyph="&#x2699;"
+                        Size="20" />
+                </Button.ImageSource>
+            </Button>
+            <Button
+                x:Name="RefreshIconButton"
+                Grid.Column="2"
+                BackgroundColor="Transparent"
+                Clicked="OnRefreshClicked"
+                IsEnabled="{Binding IsReady}"
+                Padding="8">
+                <Button.ImageSource>
+                    <FontImageSource
+                        Color="{DynamicResource ColorTextPrimary}"
+                        Glyph="&#x21BB;"
+                        Size="20" />
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+
+        <Border
+            Grid.Row="1"
+            Margin="0,12,0,0"
+            BackgroundColor="{AppThemeBinding Light={StaticResource ColorNeutral100}, Dark={StaticResource ColorNeutral900}}"
+            IsVisible="{Binding HasStatus}"
+            Padding="12"
+            Stroke="{AppThemeBinding Light={StaticResource ColorNeutral200}, Dark={StaticResource ColorNeutral600}}"
+            StrokeShape="RoundRectangle 10">
+            <Label
+                FontAttributes="Bold"
+                Text="{Binding StatusMessage}"
+                TextColor="{Binding StatusColor}" />
+        </Border>
+
+        <ActivityIndicator
+            Grid.Row="2"
+            Margin="0,12,0,0"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}" />
+
+        <CollectionView
+            Grid.Row="3"
+            Margin="0,12,0,0"
+            IsVisible="{Binding IsReady}"
+            ItemsSource="{Binding Schedulers}"
+            SelectionMode="None">
+            <CollectionView.EmptyView>
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Margin="24"
+                    Text="No active schedulers yet. Add one to start automated wallpaper updates."
+                    VerticalTextAlignment="Center" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:SchedulerItemViewModel">
+                    <Border
+                        Margin="0,0,0,12"
+                        Padding="12"
+                        Stroke="{AppThemeBinding Light={StaticResource ColorNeutral200}, Dark={StaticResource ColorNeutral600}}"
+                        StrokeShape="RoundRectangle 14">
+                        <VerticalStackLayout Spacing="8">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding ScheduleTypeLabel}" />
+                            <Label Text="{Binding TriggerAtLabel}" />
+                            <Label
+                                FontSize="13"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                Opacity="0.85"
+                                Text="{Binding SourceDescription}" />
+                            <Grid ColumnDefinitions="*,*,Auto" ColumnSpacing="10">
+                                <Button
+                                    Clicked="OnRunNowClicked"
+                                    CommandParameter="{Binding .}"
+                                    IsEnabled="{Binding IsNotBusy}"
+                                    Text="Run now" />
+                                <Button
+                                    Grid.Column="1"
+                                    Clicked="OnDeleteClicked"
+                                    CommandParameter="{Binding .}"
+                                    IsEnabled="{Binding IsNotBusy}"
+                                    Text="Delete" />
+                                <ActivityIndicator
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    IsRunning="{Binding IsRunNowInProgress}"
+                                    IsVisible="{Binding IsRunNowInProgress}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Grid.Row="4"
+            Margin="0,8,0,0"
+            Clicked="OnAddSchedulerClicked"
+            Text="Add scheduler" />
+    </Grid>
+</ContentPage>
+

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MAUI.Presentation.Pages.AddSchedulerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:MAUI.Presentation.ViewModels"
+    x:DataType="viewModels:AddSchedulerViewModel"
+    BackgroundColor="{DynamicResource ColorBackground}"
+    Title="Add Scheduler">
+
+    <ScrollView BackgroundColor="{DynamicResource ColorBackground}">
+        <VerticalStackLayout
+            BackgroundColor="{DynamicResource ColorBackground}"
+            Padding="16"
+            Spacing="14">
+
+            <Picker
+                x:Name="SchedulerTypePicker"
+                SelectedIndex="{Binding SchedulerTypeIndex}"
+                Title="Scheduler type" />
+
+            <Border
+                IsVisible="{Binding IsCustomSchedulerType}"
+                Padding="12"
+                StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="10">
+                    <Label FontAttributes="Bold" Text="Custom" />
+                    <Label
+                        FontSize="13"
+                        Opacity="0.85"
+                        Text="Downloads an image from a URL and sets it as wallpaper." />
+                    <Entry
+                        Keyboard="Url"
+                        Placeholder="https://example.com/wallpaper.jpg"
+                        Text="{Binding EndpointUrl}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                IsVisible="{Binding IsYearCalendarSchedulerType}"
+                Padding="12"
+                StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="10">
+                    <Label FontAttributes="Bold" Text="Year Calendar" />
+                    <Label
+                        FontSize="13"
+                        Opacity="0.85"
+                        Text="Generates a dot-based year progress calendar wallpaper on-device using a selectable theme." />
+                    <Picker
+                        x:Name="YearCalendarThemePicker"
+                        SelectedIndex="{Binding YearCalendarThemeIndex}"
+                        Title="Calendar theme" />
+                    <Button
+                        Clicked="OnPreviewYearCalendarClicked"
+                        Text="Preview calendar" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Picker
+                x:Name="ModePicker"
+                SelectedIndex="{Binding ModeIndex}"
+                Title="Schedule mode" />
+
+            <VerticalStackLayout IsVisible="{Binding IsOneTimeMode}" Spacing="6">
+                <Label FontAttributes="Bold" Text="Date" />
+                <DatePicker x:Name="OneTimeDatePicker" Date="{Binding SelectedDate}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="6">
+                <Label FontAttributes="Bold" Text="{Binding TimeLabel}" />
+                <TimePicker Time="{Binding SelectedTime}" />
+            </VerticalStackLayout>
+
+            <Border
+                BackgroundColor="{AppThemeBinding Light=#FFF6E6, Dark=#2E2514}"
+                IsVisible="{Binding ShowExactAlarmWarning}"
+                Padding="12"
+                Stroke="{AppThemeBinding Light=#F2D399, Dark=#705931}"
+                StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Exact alarms are disabled for this app. The task may run a bit later."
+                        TextColor="{AppThemeBinding Light=#523A00, Dark=#F4DBA8}" />
+                    <Button
+                        BackgroundColor="{AppThemeBinding Light=#F7E5BD, Dark=#3E311A}"
+                        Clicked="OnOpenExactAlarmSettingsClicked"
+                        Text="Open alarm permission settings"
+                        TextColor="{AppThemeBinding Light=#523A00, Dark=#F4DBA8}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button
+                Clicked="OnAddSchedulerClicked"
+                IsEnabled="{Binding CanSubmit}"
+                Text="Add scheduler" />
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsSubmitting}"
+                IsVisible="{Binding IsSubmitting}" />
+
+            <Label
+                FontAttributes="Bold"
+                IsVisible="{Binding HasStatus}"
+                Text="{Binding StatusMessage}"
+                TextColor="{Binding StatusColor}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
